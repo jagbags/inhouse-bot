@@ -1,6 +1,7 @@
 import { addToQueue } from './functions/queue.mjs';
 import { register } from './functions/register.mjs';
 import { showQueue } from './functions/showqueue.mjs';
+import { clearQueue } from './functions/clearqueue.mjs';
 import { leave } from './functions/leave.mjs';
 import { generateGame } from './functions/generategame.mjs';
 import { showGames } from './functions/showgames.mjs';
@@ -22,6 +23,9 @@ export async function handler(event) {
       break;
     case 'showqueue':
       await showQueue(discordEvent);
+      break;
+    case 'clearqueue':
+      await clearQueue(discordEvent);
       break;
     case 'leave':
       await leave(discordEvent);

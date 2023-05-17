@@ -59,7 +59,15 @@ export async function deleteFromQueueById(rowId) {
 }
 
 export async function emptyQueue(players) {
-  const queryParam = players.map(x => {x.id}).join('&records=')
+  if (players.length < 1) {
+    return
+  }
+
+  if (players.length == 1) {
+    return axios.delete(`${baseUrl}/${players[0].id}`, getConfig);
+  }
+
+  const queryParam = players.map(x => x.id).join('&records=')
 
   return axios.delete(`${baseUrl}?records=${queryParam}`, getConfig);
 }

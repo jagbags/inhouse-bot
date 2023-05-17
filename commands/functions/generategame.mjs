@@ -90,7 +90,7 @@ export async function generateGame(discordEvent) {
     })
 
     // clear queue and print game
-    // await emptyQueue(players)
+    await emptyQueue(players)
 
     const roleEmojis = await getRoleEmojis(discordEvent)
 

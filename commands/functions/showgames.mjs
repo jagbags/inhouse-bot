@@ -4,14 +4,20 @@ import { getRoleEmojis } from "../discord/emoji-utils.mjs";
 
 export async function showGames(discordEvent) {
 
+    console.log("SHOW ALL GAMES")
+
     const games = (await readAllGames()).data.records.map(record => {
         const fields = record.fields
         fields.id = record.id
         return fields
     })
 
+    console.log(games)
+
     // Get the emojis
     const roleEmojis = await getRoleEmojis(discordEvent)
+
+    console.log(roleEmojis)
 
     const embeds = games.map(games => {
         return {
@@ -42,9 +48,11 @@ export async function showGames(discordEvent) {
         }
     })
 
+    console.log(embeds)
+
     if (games.length > 0) {
         await embedResponse(discordEvent, embeds) 
     } else {
-        respond(discordEvent, 'No active games to display')
+        await respond(discordEvent, 'No active games to display')
     }
 }

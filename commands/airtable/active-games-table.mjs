@@ -18,6 +18,10 @@ export async function readAllGames() {
     return axios.get(url, getConfig);
 }
 
+export async function getGameById(rowId) {
+  return axios.get(`${baseUrl}/${rowId}`, getConfig);
+}
+
 export async function createGame(blueTeam, redTeam) {
     const data = {
         records: [{
